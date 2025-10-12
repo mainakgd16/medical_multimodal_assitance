@@ -23,10 +23,8 @@ class MedCLIPModel:
         
         try:
             # For this implementation, we'll use a general CLIP model as a base
-            # In a real deployment, you'd use the actual BiomedCLIP model
             self.model = CLIPModel.from_pretrained("openai/clip-vit-base-patch16")
             self.processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch16")
-            # In biomedclip_model.py, replace lines 27-28:
             self.model.to(self.device)
             self.model.eval()
             
