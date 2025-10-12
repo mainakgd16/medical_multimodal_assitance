@@ -1,0 +1,11 @@
+Patient: Richard Roe, 70 y/o
+Date: 2025-10-03
+Diagnosis: Acute decompensated heart failure with pulmonary edema
+
+Rx:
+- Furosemide 40–80 mg IV/PO once, then titrate by response.
+- Consider ACE inhibitor/ARB per cardiology.
+- Supplemental oxygen to maintain SpO2 >92% as needed.
+- Sodium/fluid restriction; daily weights.
+
+Follow-up: Admit/observe per severity; cardiology input; repeat CXR after diuresis.

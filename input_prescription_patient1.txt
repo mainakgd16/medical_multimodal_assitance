@@ -1,0 +1,11 @@
+Patient: John Doe, 60 y/o
+Date: 2025-10-03
+Diagnosis: Community-acquired pneumonia — suspected right upper lobe
+
+Rx:
+- Amoxicillin-clavulanate 875/125 mg PO BID x 7 days (with food).
+- Azithromycin 500 mg PO day 1, then 250 mg PO daily x 4 days (if atypical coverage desired).
+- Albuterol inhaler 90 mcg — 2 puffs q4h PRN wheeze/dyspnea.
+- Acetaminophen 500–1000 mg PO q6h PRN (max 3 g/day).
+
+Follow-up: Reassess in 48–72 hours; repeat CXR in ~6 weeks or sooner if not improving.

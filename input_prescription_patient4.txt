@@ -1,0 +1,10 @@
+Patient: Robert Johnson, 70 y/o
+Date: 2025-10-03
+Diagnosis: Left pleural effusion — evaluate for parapneumonic vs malignant
+
+Rx:
+- Diagnostic thoracentesis with full pleural studies.
+- If empyema suspected: Piperacillin-tazobactam 4.5 g IV q8h (adjust per cultures).
+- Analgesia as needed.
+
+Follow-up: Repeat imaging after drainage; consider chest tube if large/loculated.

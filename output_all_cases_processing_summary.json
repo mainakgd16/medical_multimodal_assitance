@@ -1,0 +1,103 @@
+{
+  "test_info": {
+    "test_name": "Real Medical Cases Processing via main.py",
+    "timestamp": "2025-10-06T13:19:34.164143",
+    "description": "Processed real medical images and prescriptions from root folder"
+  },
+  "model_info": {
+    "service_url": "http://localhost:8501",
+    "models_status": {
+      "llama": true,
+      "medclip": true,
+      "clinical_bert": true
+    }
+  },
+  "results_summary": {
+    "total_cases": 5,
+    "successful_cases": 5,
+    "failed_cases": 0,
+    "success_rate": "100.0%"
+  },
+  "case_results": [
+    {
+      "case_id": "OUTPUT_PATIENT_CASE_001",
+      "status": "success",
+      "output_file": "conversation_OUTPUT_PATIENT_CASE_001.json",
+      "conversation_length": 13,
+      "summary": {
+        "case_overview": "Medical case OUTPUT_PATIENT_CASE_001 processed with multimodal AI analysis",
+        "key_findings": [
+          "Imaging: chest x-ray lung cancer (confidence: 0.05)",
+          "Prescription analysis completed with safety assessment"
+        ],
+        "clinical_impression": "Integrated analysis indicates moderate risk case",
+        "risk_level": "Moderate",
+        "priority": "Standard"
+      }
+    },
+    {
+      "case_id": "OUTPUT_PATIENT_CASE_002",
+      "status": "success",
+      "output_file": "conversation_OUTPUT_PATIENT_CASE_002.json",
+      "conversation_length": 13,
+      "summary": {
+        "case_overview": "Medical case OUTPUT_PATIENT_CASE_002 processed with multimodal AI analysis",
+        "key_findings": [
+          "Imaging: chest x-ray normal (confidence: 0.05)",
+          "Prescription analysis completed with safety assessment"
+        ],
+        "clinical_impression": "Integrated analysis indicates low risk case",
+        "risk_level": "Low",
+        "priority": "Standard"
+      }
+    },
+    {
+      "case_id": "OUTPUT_PATIENT_CASE_003",
+      "status": "success",
+      "output_file": "conversation_OUTPUT_PATIENT_CASE_003.json",
+      "conversation_length": 13,
+      "summary": {
+        "case_overview": "Medical case OUTPUT_PATIENT_CASE_003 processed with multimodal AI analysis",
+        "key_findings": [
+          "Imaging: chest x-ray lung cancer (confidence: 0.05)",
+          "Prescription analysis completed with safety assessment"
+        ],
+        "clinical_impression": "Integrated analysis indicates moderate risk case",
+        "risk_level": "Moderate",
+        "priority": "Standard"
+      }
+    },
+    {
+      "case_id": "OUTPUT_PATIENT_CASE_004",
+      "status": "success",
+      "output_file": "conversation_OUTPUT_PATIENT_CASE_004.json",
+      "conversation_length": 13,
+      "summary": {
+        "case_overview": "Medical case OUTPUT_PATIENT_CASE_004 processed with multimodal AI analysis",
+        "key_findings": [
+          "Imaging: chest x-ray tuberculosis (confidence: 0.05)",
+          "Prescription analysis completed with safety assessment"
+        ],
+        "clinical_impression": "Integrated analysis indicates low risk case",
+        "risk_level": "Low",
+        "priority": "Standard"
+      }
+    },
+    {
+      "case_id": "OUTPUT_PATIENT_CASE_005",
+      "status": "success",
+      "output_file": "conversation_OUTPUT_PATIENT_CASE_005.json",
+      "conversation_length": 13,
+      "summary": {
+        "case_overview": "Medical case OUTPUT_PATIENT_CASE_005 processed with multimodal AI analysis",
+        "key_findings": [
+          "Imaging: ct scan fracture (confidence: 0.05)",
+          "Prescription analysis completed with safety assessment"
+        ],
+        "clinical_impression": "Integrated analysis indicates moderate risk case",
+        "risk_level": "Moderate",
+        "priority": "Standard"
+      }
+    }
+  ]
+}

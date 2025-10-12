@@ -1,0 +1,11 @@
+Patient: John Smith, 65 y/o
+Date: 2025-10-03
+Diagnosis: COPD exacerbation (likely infectious trigger)
+
+Rx:
+- Prednisone 40 mg PO daily x 5 days.
+- Salbutamol (albuterol) + ipratropium neb q6h PRN; continue home LAMA if any.
+- Doxycycline 100 mg PO BID x 7 days (or azithromycin per protocol).
+- Oxygen to target SpO2 88–92% if hypoxemic.
+
+Follow-up: Clinic in 3–5 days; arrange spirometry and inhaler review.

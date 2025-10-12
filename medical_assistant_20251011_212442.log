@@ -1,0 +1,13 @@
+2025-10-11 21:24:42,543 - logger_config - INFO - Logging initialized. Log file: ./medical_assistant_20251011_212442.log
+2025-10-11 21:24:42,543 - logger_config - INFO - Log level: INFO
+2025-10-11 21:24:42,543 - __main__ - INFO - ============================================================
+2025-10-11 21:24:42,543 - __main__ - INFO - AI-Powered Medical Assistant Starting
+2025-10-11 21:24:42,543 - __main__ - INFO - ============================================================
+2025-10-11 21:24:42,543 - __main__ - INFO - Starting web interface mode
+2025-10-11 21:24:42,543 - __main__ - INFO - Starting web interface...
+2025-10-11 21:28:46,636 - biomedclip_model - INFO - BiomedCLIP model loaded successfully on cpu
+2025-10-11 21:28:46,648 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-10-11 21:28:46,648 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-10-11 21:28:50,307 - clinical_bert - INFO - Clinical BERT model loaded successfully on cpu
+2025-10-11 21:28:52,365 - medical_processor - INFO - Medical Processor initialized
+2025-10-11 21:28:52,369 - medical_processor - INFO - Models status: {'llama': True, 'medclip': True, 'clinical_bert': True}

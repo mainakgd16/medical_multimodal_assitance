@@ -1,0 +1,11 @@
+Patient: John Smith, 56 y/o
+Date: 2025-10-03
+Diagnosis: Left hand third metacarpal fracture (closed, non‑displaced)
+
+Rx:
+- Volar splint or cast immobilization for 3–4 weeks (keep dry).
+- Ibuprofen 400 mg PO q6–8h PRN pain (unless contraindicated).
+- Alternate/adjunct: Acetaminophen 500–1000 mg PO q6h PRN (max 3 g/day).
+- Elevation and ice; avoid weight‑bearing with affected hand.
+
+Follow-up: Orthopedics in 7–10 days with repeat X-ray.
