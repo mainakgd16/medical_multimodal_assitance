@@ -21,55 +21,6 @@ from medical_chatbot import MedicalChatbot
 logger = get_logger(__name__)
 
 
-def create_sample_images():
-    """
-    Create placeholder sample medical images for testing
-    Note: In a real implementation, these would be actual medical images
-    """
-    from PIL import Image
-    import numpy as np
-    
-    # Create data directory if it doesn't exist
-    os.makedirs("data/images", exist_ok=True)
-    
-    # Sample image specifications
-    sample_images = [
-        {"name": "chest_xray_pneumonia.jpg", "size": (512, 512), "description": "Chest X-ray with pneumonia"},
-        {"name": "brain_mri_tumor.jpg", "size": (256, 256), "description": "Brain MRI with tumor"},
-        {"name": "ct_abdominal_trauma.jpg", "size": (512, 512), "description": "Abdominal CT with trauma"},
-        {"name": "histopathology_cancer.jpg", "size": (1024, 1024), "description": "Histopathology slide with cancer"},
-        {"name": "dermatology_acne.jpg", "size": (800, 600), "description": "Dermatology image with acne"}
-    ]
-    
-    for img_spec in sample_images:
-        img_path = os.path.join("data/images", img_spec["name"])
-        
-        if not os.path.exists(img_path):
-            # Create a placeholder image with some medical-like patterns
-            width, height = img_spec["size"]
-            
-            # Generate a grayscale medical-like image
-            np.random.seed(42)  # For reproducibility
-            image_array = np.random.randint(50, 200, (height, width), dtype=np.uint8)
-            
-            # Add some structure to make it look more medical
-            center_x, center_y = width // 2, height // 2
-            y, x = np.ogrid[:height, :width]
-            
-            # Add circular patterns (like organs or lesions)
-            mask1 = (x - center_x) ** 2 + (y - center_y) ** 2 < (min(width, height) // 4) ** 2
-            image_array[mask1] = np.clip(image_array[mask1] + 50, 0, 255)
-            
-            # Add some noise and texture
-            noise = np.random.normal(0, 10, (height, width))
-            image_array = np.clip(image_array + noise, 0, 255).astype(np.uint8)
-            
-            # Convert to PIL Image and save
-            image = Image.fromarray(image_array, mode='L')
-            image.save(img_path)
-            
-            logger.info(f"Created sample image: {img_path}")
-
 
 def load_real_input_cases():
     """
@@ -231,89 +182,7 @@ def process_real_cases() -> List[Dict]:
     return results
 
 
-def process_single_case(processor: MedicalProcessor, case_data: Dict) -> Dict:
-    """
-    Process a single medical case
-    """
-    logger.info(f"Processing case: {case_data['case_id']}")
-    
-    # Create a mock image path (in real implementation, this would be actual image)
-    image_path = f"data/images/mock_{case_data['case_id'].lower()}.jpg"
-    
-    # Process the case
-    result = processor.process_medical_case(
-        image_path=image_path,
-        prescription_text=case_data["prescription"],
-        patient_info=case_data["patient_info"],
-        case_id=case_data["case_id"]
-    )
-    
-    return result
 
-
-def process_all_sample_cases() -> List[Dict]:
-    """
-    Process all 5 sample medical cases and generate JSON outputs
-    """
-    logger.info("Starting batch processing of sample cases")
-    
-    # Initialize processor
-    processor = MedicalProcessor()
-    
-    # Load sample cases
-    with open("data/sample_prescriptions.json", "r", encoding="utf-8") as f:
-        sample_cases = json.load(f)
-    
-    # Create output directory
-    os.makedirs("outputs", exist_ok=True)
-    
-    results = []
-    
-    for case_data in sample_cases:
-        try:
-            # Process the case
-            result = process_single_case(processor, case_data)
-            
-            # Save individual case result to JSON
-            output_filename = f"conversation_{case_data['case_id']}.json"
-            output_path = os.path.join("outputs", output_filename)
-            
-            with open(output_path, "w", encoding="utf-8") as f:
-                json.dump(result, f, indent=2, ensure_ascii=False)
-            
-            logger.info(f"Saved case result to: {output_path}")
-            
-            results.append({
-                "case_id": case_data["case_id"],
-                "status": "success",
-                "output_file": output_path,
-                "summary": result.get("clinical_summary", {})
-            })
-            
-        except Exception as e:
-            logger.error(f"Error processing case {case_data['case_id']}: {e}")
-            results.append({
-                "case_id": case_data["case_id"],
-                "status": "error",
-                "error": str(e)
-            })
-    
-    # Save batch processing summary
-    summary_path = os.path.join("outputs", "batch_processing_summary.json")
-    summary_data = {
-        "timestamp": datetime.now().isoformat(),
-        "total_cases": len(sample_cases),
-        "successful_cases": len([r for r in results if r["status"] == "success"]),
-        "failed_cases": len([r for r in results if r["status"] == "error"]),
-        "results": results
-    }
-    
-    with open(summary_path, "w", encoding="utf-8") as f:
-        json.dump(summary_data, f, indent=2, ensure_ascii=False)
-    
-    logger.info(f"Batch processing complete. Summary saved to: {summary_path}")
-    
-    return results
 
 
 def run_web_interface():
@@ -430,10 +299,6 @@ def main():
     logger.info("AI-Powered Medical Assistant Starting")
     logger.info("=" * 60)
     
-    # Create sample images if requested
-    if args.create_samples:
-        logger.info("Creating sample medical images...")
-        create_sample_images()
     
     # Check dependencies
     if args.mode == "check":
@@ -472,59 +337,6 @@ def main():
         
         print(f"\n📊 Summary: real_cases_processing_summary.json")
         
-    elif args.mode == "batch":
-        logger.info("Starting batch processing mode (sample cases)")
-        results = process_all_sample_cases()
-        
-        # Print summary
-        successful = len([r for r in results if r["status"] == "success"])
-        total = len(results)
-        
-        print(f"\nBatch Processing Complete!")
-        print(f"Successfully processed: {successful}/{total} cases")
-        print(f"Output files saved in: outputs/")
-        
-        for result in results:
-            if result["status"] == "success":
-                print(f"✓ {result['case_id']}: {result['output_file']}")
-            else:
-                print(f"✗ {result['case_id']}: {result['error']}")
-        
-    elif args.mode == "single":
-        if not args.case_id:
-            print("Error: --case-id required for single case mode")
-            return 1
-        
-        logger.info(f"Starting single case processing mode for {args.case_id}")
-        
-        # Load sample cases
-        with open("data/sample_prescriptions.json", "r", encoding="utf-8") as f:
-            sample_cases = json.load(f)
-        
-        # Find the specified case
-        case_data = None
-        for case in sample_cases:
-            if case["case_id"] == args.case_id:
-                case_data = case
-                break
-        
-        if not case_data:
-            print(f"Error: Case {args.case_id} not found")
-            return 1
-        
-        # Process the case
-        processor = MedicalProcessor()
-        result = process_single_case(processor, case_data)
-        
-        # Save result
-        os.makedirs("outputs", exist_ok=True)
-        output_path = os.path.join("outputs", f"conversation_{args.case_id}.json")
-        
-        with open(output_path, "w", encoding="utf-8") as f:
-            json.dump(result, f, indent=2, ensure_ascii=False)
-        
-        print(f"Case {args.case_id} processed successfully!")
-        print(f"Output saved to: {output_path}")
     
     logger.info("Application finished")
     return 0
