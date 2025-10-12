@@ -43,6 +43,10 @@ class MedicalProcessor:
         
         try:
             status["llama"] = self.llama_model.check_model_availability()
+        except ConnectionError as e:
+            logger.warning(f"Llama model check failed due to connection failed: {e}")
+        except ImportError as e:
+            logger.warning(f"Llama model check failed due to import failed: {e}")
         except Exception as e:
             logger.warning(f"Llama model check failed: {e}")
         
